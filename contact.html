@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <title>Ibra's</title>
+  <link rel="stylesheet" href="css/ibras.css">
+  <link rel="shortcut icon" type="image/png" href="images/Burguer.png">
+  <script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    function openRegisterForm() {
+      document.getElementById("registerForm").style.display = "block";
+    }
+    function closeRegisterForm() {
+      document.getElementById("registerForm").style.display = "none";
+    }
+    function redirect() {
+      window.location.href = "http://rxc2199.uta.cloud/";
+    }
+  </script>
+</head>
+
+<body>
+  <div class="wrap80">
+    <div class="section5_1">
+      <div class="topnav">
+        <a href="index.html" class="header-anchor"><img class="header-brand"></a>
+        <a href="index.html">INICIO</a>
+        <a href="nosotros.html">SOBRE NOSOTROS</a>
+        <a href="menu.html">MENU</a>
+        <a class="open-button" onclick="redirect()">BLOG</a>
+        <a href="contact.html">CONTACTO</a>
+        <a class="open-button" onclick="openRegisterForm();">REGISTRO</a>
+        <a class="open-button" onclick="openForm()">INICIAR SESION</a>
+      </div>
+
+      <div class="wrapper">
+        <h4 id="sec2header">DI HOLA</h4>
+        <h1 id="sec2Title">Contacto</h1>
+      </div>
+    </div>
+    <div class="section5_2">
+      <img src="images/Burguer.png" width="40" height="40">
+      <h1 class="secTitle">Di hola</h1>
+      <p>Di hola, envianos un mensaje</p>
+      <p> Envianos tus comentarios y suguerencias ustedes son importante para nosotros</p>
+
+
+      <form>
+        <div>
+          <input type="text" placeholder="Name" class="inputField" size="50" style="margin-right: 2%;">
+          <input type="text" placeholder="Email" class="inputField" size="50">
+        </div>
+        <div>
+          <input type="text" placeholder="Subject" class="inputField" size="113">
+        </div>
+        <div class="contactRow3">
+          <textarea placeholder="Message" rows=10 id="contactMessage"></textarea>
+        </div>
+        <div>
+          <button type="submit">
+            ENVIAR MENSAJE
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="footer">
+      <img id=logoImg>
+      <div id="footerContent">
+        <a href="#" class="footerGreen">Habla a:</a>
+        <p>Av. Intercomunal, sector la Mora, calle 8</p>
+        <a href="#" class="footerGreen"> Telefono:</a>
+        <p>+58 251 261 00 01</p>
+        <a href="#" class="footerGreen">Correo:</a>
+        <p>yourmail@gmail.com</p>
+        <p style="opacity: 0.5;">Copyright &copy; 2020 Todos los derechos reservados | Este sitio esta hecho con por
+          &hearts; DiazApps</p>
+      </div>
+    </div>
+
+    <div class="form-popup" id="myForm">
+      <form action="/action_page.php" class="form-container">
+        <img class="btnClose" onclick="closeForm()">
+        <h1><img id="formImg"> Iniciar Sesion</h1>
+        <hr>
+        <label for="email"><b>Usuario</b></label>
+        <input type="text" name="email" required>
+
+        <label for="psw"><b>Contrasena</b></label>
+        <input type="password" name="psw" required>
+        <hr>
+        <div style="text-align: right;"><button type="submit" class="btn">Entrar</button></div>
+      </form>
+    </div>
+
+    <div class="form-popup" id="registerForm">
+      <form class="form-container-rg">
+        <img class="btnClose" onclick="closeRegisterForm()">
+        <h1><img class="formImg"> Registro de Usuario</h1>
+        <hr>
+        <label for="email"><b>Nombre y apellido:</b></label>
+        <input type="text" required>
+
+        <label for="psw"><b>Correo</b></label>
+        <input type="email" required>
+
+        <label for="psw"><b>Contrasena</b></label>
+        <input type="password" required>
+
+        <label for="psw"><b>Repetir Contrasena:</b></label>
+        <input type="password" required>
+        <label for="psw"><b>Direccion:</b></label>
+        <textarea required rows="5" style="width: 350px;"></textarea>
+        <hr>
+        <div style="text-align: right;"><button type="submit" class="btn" onclick="redirect()">Cargar</button></div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
