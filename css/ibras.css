@@ -6,6 +6,7 @@
     font-family: 'OpenSans';
     src: url('../fonts/OpenSans-Regular.ttf')
 }
+
 #mainBody{
     padding: 0 10%;
 }
@@ -13,8 +14,7 @@
     width: 80%;   
     margin: 0 auto;
 }
-.wrapper{
-    
+.wrapper{    
     text-align: center;
     padding: 0 12%;
 }
@@ -104,6 +104,12 @@ p{
     text-decoration: none;
     font-size: 15px;    
 }
+.topnav a:hover{
+    color: red;
+}
+.topnav .active{
+    color: red;
+}
 .header-brand{
     content: url("../images/5.png");
     width: 150px;
@@ -115,7 +121,8 @@ p{
 }
 #section2{
     height: 65vh;
-    padding-top: 5em;
+    padding-top: 2em;
+    overflow: hidden;
 }
 #sec2leftimg{
     float: left;
@@ -125,15 +132,18 @@ p{
     float: right;
     height: 20em;
 }
+#sec2rightimg::after{
+    clear: both;
+}
 .row {
     display: flex;
     margin-top: -5%;
+    
   }
 .column {
     flex: 50%;
-    padding: 50px;
+    padding: 5%;
     text-align: left;
-    
 }
 #section4 .row{
     display: flex;
@@ -147,14 +157,9 @@ p{
     
 }
 #section3{
-    /*background: url("../images/hamburguesa1.jpg");*/
-    height: 100vh;
-    /*background-size: 100% 100%;*/
-    /*background-position: center;
-    background-repeat: no-repeat;*/
-    /*opacity: 0.5;*/
+    min-height: 120vh;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
 }
 #section3:before{
     content: ' ';
@@ -167,7 +172,7 @@ p{
     background-image: url("../images/hamburguesa1.jpg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100% 100%;
+    background-size: cover;
 }
 #section3 div {
     /*padding: 50px;*/
@@ -242,7 +247,7 @@ p{
     margin-top: 50px;
 }
 #section4{
-    height: 95vh;
+    height: 110vh;
     padding-top: 5em;
 }
 .btn-group{
@@ -279,49 +284,49 @@ p{
   }
 #tdImg1{
       content: url("../images/hamburguesa1.jpg");
-      width: 80%;      
+      width: 100%;      
       height: auto;
       position: relative;
 }
 #tdImg2{
     content: url("../images/hamburguesa3.jpg");
-    width: 80%;      
+    width: 100%;      
     height: auto;
     position: relative; 
 }
 #tdImg3{
     content: url("../images/hamburguesa5.jpg");
-    width: 80%;      
+    width: 100%;      
     height: auto;
     position: relative;
 }
 #tdImg4{
     content: url("../images/hamburguesa7.jpg");
-    width: 80%;      
+    width: 100%;      
     height: auto;
     position: relative;     
 }
 #tdImg5{
     content: url("../images/hamburguesa2.jpg");
-    width: 80%;      
+    width: 100%;      
     height: auto;
     position: relative;      
 }
 #tdImg6{
     content: url("../images/hamburguesa4.jpg");
-    width: 80%;      
+    width: 100%;      
     height: auto;
     position: relative;  
 }
 #tdImg7{
     content: url("../images/hamburguesa6.jpg");
-    width: 80%;      
+    width: 100%;      
     height: auto;
     position: relative;    
 }
 #tdImg8{
     content: url("../images/hamburguesa8.jpg");
-    width: 80%;      
+    width: 100%;      
     height: auto;
     position: relative;     
 }  
@@ -330,7 +335,9 @@ p{
   }
   .tdText{
       text-align: left;
-      width: 70%;
+      width: 14em;
+      padding-left: 0.5em;
+      
   }
  .spacer{
      height: 30px;
@@ -649,7 +656,7 @@ p{
 } 
 .section3_2{
     padding-top: 5%;
-    height: 100vh;
+    height: 130vh;
 }
 .section3_2 div{
     padding: 40px;
@@ -732,7 +739,7 @@ p{
     color: #fff;
   } 
   .section5_2{
-      height: 85vh;
+      height: 100vh;
       padding-top: 5%;
   }
 
