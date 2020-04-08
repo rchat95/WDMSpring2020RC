@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo "Checking..."."<br>";
   echo $email."<br>";
   echo $psw."<br>";
+  echo "hello";
 }
 
 function test_input($data) {
