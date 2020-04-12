@@ -118,7 +118,7 @@
         <a href="index.php">INICIO</a>
         <a href="nosotros.php">SOBRE NOSOTROS</a>
         <a  href="menu.php">MENU</a>
-        <a class="open-button" onclick="redirect()">BLOG</a>
+        <a class="open-button" onclick="openBlog()">BLOG</a>
         <a class="active" href="contact.php">CONTACTO</a>
         <a class="open-button" onclick="openRegisterForm();">REGISTRO</a>
         <a class="open-button" onclick="openForm();">INICIAR SESION</a>

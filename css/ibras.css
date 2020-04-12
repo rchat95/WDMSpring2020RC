@@ -258,7 +258,7 @@ p{
     background-color: transparent;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 15px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -268,7 +268,7 @@ p{
   .btn-group .button-sel{
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 15px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;

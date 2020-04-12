@@ -85,68 +85,7 @@
   </script>
 </head>
 
-<body>
-  <?php
-  $email = $psw = "";
-  try {
-    $connString = "mysql:host=localhost;port=3306;dbname=rxc2199_ibrasDB";
-    $user = "rxc2199_rchat1995";
-    $pass = "Riju1995@";
-
-    $pdo = new PDO($connString, $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    /*if(is_object($pdo) && $pdo != false)
-    { 
-         echo "I'm connected. PDO is ready and willing";        
-    }
-    else
-    {
-        echo "Sorry something went  horribly wrong! Not connected to database";
-    }
-  */
-
-    /*
-  $sql = "SELECT * FROM USERS";
-  $result = $pdo->query($sql);  
-  */
-
-    /*
-  while($row = $result->fetch()) {
-    echo $row['UserID']." - ".$row['UserName']."<br/>";
-  }
-  $pdo = null;
-  */
-
-
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $email = test_input($_POST["email"]);
-      $psw = test_input($_POST["psw"]);
-      $sql = "SELECT * FROM USERS WHERE Email = '$email' AND Password = '$psw'";
-      $result = $pdo->query($sql);
-      $resultArr = $result->fetchAll();
-      echo "Number of rows returned = " . count($resultArr);
-      /*
-      while($row = $result->fetch()) {
-      echo $row['UserID']." - ".$row['UserName']."<br/>";
-      } 
-  */
-      $pdo = null;
-    }
-  } catch (PDOException $e) {
-    die($e->getMessage());
-  }
-
-  function test_input($data)
-  {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
-
-  ?>
+<body>  
   <div class="wrap80">
     <div id="section1">
       <div class="topnav">
@@ -364,7 +303,7 @@
     </div>
 
     <div class="form-popup" id="myForm">
-      <form class="form-container" name="signinForm" method="POST" onsubmit="return SignIn()" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+      <form class="form-container" name="signinForm" method="POST" onsubmit="return SignIn()" action="login.php">
         <img class="btnClose" onclick="closeForm()">
         <h1><img class="formImg"> Iniciar Sesion</h1>
         <hr>
@@ -400,8 +339,8 @@
         <hr>
         <div style="text-align: right;"><button type="submit" class="btn">Cargar</button></div>
     </div>
-
-  </div>
+  </div>  
 </body>
+
 
 </html>
