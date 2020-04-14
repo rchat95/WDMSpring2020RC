@@ -1,46 +1,24 @@
 <?php
-$email = $psw = $IsAdmin = "";
-try {
+$name = $email = $psw = $address = "";
+try
+{
   include 'connect.php';
   session_start();
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = test_input($_POST["uName"]);  
     $email = test_input($_POST["email"]);
     $psw = test_input($_POST["psw"]);
-    $sql = "SELECT * FROM USERS WHERE Email = '$email' AND Password = '$psw'";
-    #echo $sql;
-    $result = $pdo->query($sql);
-    /*
-    while ($row = $result->fetch()) {
-      echo "<br>".$row['UserName']."<br>";
+    $address = test_input($_POST["address"]);
+    $sql = "INSERT INTO USERS (UserName, Email, Password, Address, IsAdmin) VALUES (?,?,?,?,?)";
+    $pdo->prepare($sql)->execute([$name, $email, $psw, $address, 0]);
+    $_SESSION['EMAIL'] = $email;
+    $_SESSION['LOGIN'] = 'true';
+    navigateTo("http://rxc2199.uta.cloud/assignment2_RC/dashboard.php");
     }
-    */
-    $resultArr = $result->fetchAll();
-    #echo "<br>".$resultArr[0]['IsAdmin'];
-    $IsAdmin = $resultArr[0]['IsAdmin'];
-    #echo "IsAdmin = ".$IsAdmin;
-
-
-    if (count($resultArr) == 0) {
-      function_alert("Incorrect username or password");
-      navigateTo("http://rxc2199.uta.cloud/assignment2_RC/index.php");
-      #die;
-    } else {
-      #function_alert("User found!");
-      
-      $_SESSION['EMAIL'] = $email;
-      $_SESSION['LOGIN'] = 'true';
-      #Check type of user
-      if($IsAdmin == 1){
-        navigateTo("http://rxc2199.uta.cloud/assignment2_RC/admin.php");
-      }
-      else{
-        navigateTo("http://rxc2199.uta.cloud/assignment2_RC/dashboard.php");
-      }
-    }
-    
     $pdo = null;
   }
-} catch (PDOException $e) {
+catch (PDOException $e)
+{
   die($e->getMessage());
 }
 ?>

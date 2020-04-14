@@ -1,3 +1,29 @@
+<?php
+include 'connect.php';
+session_start();
+$email = $_SESSION['EMAIL'];
+$sql = "SELECT UserName FROM USERS WHERE Email = '$email'";
+$result = $pdo->query($sql);
+
+while ($row = $result->fetch()) {
+  $userName =  $row['UserName'];
+}
+
+function signOut()
+{
+  session_unset();
+  session_destroy();
+  $_SESSION['LOGIN'] = 'false';
+  function_alert("Signed out successfully!");
+  #navigateTo("http://rxc2199.uta.cloud/assignment2_RC/index.php");
+}
+
+if (isset($_GET['signout'])) {
+  signOut();
+}
+
+
+?>
 <!DOCTYPE HTML>
 <html>
 
@@ -15,6 +41,7 @@
       document.getElementById("historyBtn").style.backgroundColor = "transparent";
       document.getElementById("offerBtn").style.backgroundColor = "transparent";
     }
+
     function editAddress() {
       document.getElementById("profileBtn").style.backgroundColor = "transparent";
       document.getElementById("addressBtn").style.backgroundColor = "red";
@@ -22,6 +49,7 @@
       document.getElementById("historyBtn").style.backgroundColor = "transparent";
       document.getElementById("offerBtn").style.backgroundColor = "transparent";
     }
+
     function quickOrder() {
       document.getElementById("profileBtn").style.backgroundColor = "transparent";
       document.getElementById("addressBtn").style.backgroundColor = "transparent";
@@ -29,6 +57,7 @@
       document.getElementById("historyBtn").style.backgroundColor = "transparent";
       document.getElementById("offerBtn").style.backgroundColor = "transparent";
     }
+
     function orderHistory() {
       document.getElementById("profileBtn").style.backgroundColor = "transparent";
       document.getElementById("addressBtn").style.backgroundColor = "transparent";
@@ -36,6 +65,7 @@
       document.getElementById("historyBtn").style.backgroundColor = "red";
       document.getElementById("offerBtn").style.backgroundColor = "transparent";
     }
+
     function viewOffers() {
       document.getElementById("profileBtn").style.backgroundColor = "transparent";
       document.getElementById("addressBtn").style.backgroundColor = "transparent";
@@ -57,10 +87,13 @@
         <a href="menu.php">MENU</a>
         <a class="open-button" onclick="redirect()">BLOG</a>
         <a href="contact.php">CONTACTO</a>
+        <a href="http://rxc2199.uta.cloud/assignment2_RC/index.php?signout=true">DESCONECTAR</a>
       </div>
       <div class="wrapper">
         <h4 id="sec2header">Your one stop shop for burgers and more</h4>
-        <h1 id="sec2Title">Welcome Rongon</h1>
+        <h1 id="sec2Title">Welcome&nbsp; <?php print_r($userName) ?>
+
+        </h1>
       </div>
     </div>
 

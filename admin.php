@@ -17,6 +17,7 @@
         <a href="#">SHOP INVENTORY</a>
         <a href="#">ORDER MANAGEMENT SYSTEM</a>
         <a href="#">EMPLOYEE PORTAL</a>
+        <a id="signoutBtn" href="http://rxc2199.uta.cloud/assignment2_RC/index.php?signout=true">DESCONECTAR</a>
       </div>
       <div class="wrapper">
         <h1 id="sec2Title">Admin Dashboard</h1>

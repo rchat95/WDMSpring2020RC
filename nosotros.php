@@ -1,3 +1,24 @@
+<?php
+include 'connect.php';
+session_start();
+
+#$_SESSION['LOGIN'] = 'false';
+
+function signOut()
+{
+  session_unset();
+  session_destroy();
+  $_SESSION['LOGIN'] = 'false';
+  #function_alert("Signed out successfully!");
+  #navigateTo("http://rxc2199.uta.cloud/assignment2_RC/index.php");
+}
+
+if (isset($_GET['signout'])) {
+  signOut();
+}
+
+#print_r($_SESSION['LOGIN']);
+?>
 <!DOCTYPE HTML>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,18 +31,23 @@
     function openForm() {
       document.getElementById("myForm").style.display = "block";
     }
+
     function closeForm() {
       document.getElementById("myForm").style.display = "none";
     }
+
     function openRegisterForm() {
       document.getElementById("rgForm").style.display = "block";
     }
+
     function closeRegisterForm() {
       document.getElementById("rgForm").style.display = "none";
     }
+
     function openBlog() {
       window.location.href = "http://rxc2199.uta.cloud/";
     }
+
     function SignIn() {
       var emailID = document.forms["signinForm"]["email"].value;
       var passWord = document.forms["signinForm"]["psw"].value;
@@ -32,9 +58,8 @@
         return false;
       }
       if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(signinForm.email.value)) {
-        
-      }
-      else {
+
+      } else {
         alert("You have entered an invalid email address!")
         return (false);
       }
@@ -61,9 +86,8 @@
         return false;
       }
       if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(registerForm.email.value)) {
-        
-      }
-      else {
+
+      } else {
         alert("You have entered an invalid email address!")
         return (false);
       }
@@ -71,13 +95,19 @@
         alert("Password is required!");
         return false;
       }
+      if (passWord.length < 8 || passWord.length > 10) {
+        alert("Password length has to be betwwen 8 to 10 characters!");
+        return false;
+      }
       if (repeatPassword != passWord) {
         alert("Passwords do not match!");
         return false;
-      }      
+      }
     }
 
-
+    function openDash() {
+      window.location.href = "http://rxc2199.uta.cloud/assignment2_RC/dashboard.php";
+    }
   </script>
 </head>
 
@@ -91,8 +121,10 @@
         <a href="menu.php">MENU</a>
         <a class="open-button" onclick="openBlog()">BLOG</a>
         <a href="contact.php">CONTACTO</a>
-        <a class="open-button" onclick="openRegisterForm();">REGISTRO</a>
-        <a class="open-button" onclick="openForm()">INICIAR SESION</a>
+        <a id="dashBtn" class="open-button" onclick="openDash();">DASHBOARD</a>
+        <a id="signoutBtn" href="http://rxc2199.uta.cloud/assignment2_RC/index.php?signout=true">DESCONECTAR</a>
+        <a id="registerBtn" class="open-button" onclick="openRegisterForm();">REGISTRO</a>
+        <a id="signinBtn" class="open-button" onclick="openForm();" style="white-space: nowrap;">INICIAR SESION</a>
       </div>
       <div class="wrapper">
         <h4 id="sec2header">LAS MEJORES DE LA CIUDAD</h4>
@@ -195,7 +227,7 @@
     </div>
 
     <div class="form-popup" id="myForm">
-      <form class="form-container" name="signinForm">
+      <form class="form-container" name="signinForm" method="POST" onsubmit="return SignIn()" action="login.php">
         <img class="btnClose" onclick="closeForm()">
         <h1><img class="formImg"> Iniciar Sesion</h1>
         <hr>
@@ -205,35 +237,49 @@
         <label for="psw"><b>Contrasena</b></label>
         <input type="password" name="psw" required>
         <hr>
-        <div style="text-align: right;"><button type="submit" class="btn" onclick="SignIn()">Entrar</button></div>
+        <div style="text-align: right;"><button type="submit" class="btn">Entrar</button></div>
       </form>
     </div>
 
     <div class="form-popup" id="rgForm">
-      <form class="form-container-rg" name="registerForm" method="POST" onsubmit="return SignUp()">
+      <form class="form-container-rg" name="registerForm" method="POST" onsubmit="return SignUp()" action="register.php">
         <img class="btnClose" onclick="closeRegisterForm()">
         <h1><img class="formImg"> Registro de Usuario</h1>
         <hr>
-        <label for="email"><b>Nombre y apellido:</b></label>
+        <label for="uName"><b>Nombre y apellido:</b></label>
         <input type="text" required name="uName">
 
-        <label for="psw"><b>Correo</b></label>
+        <label for="email"><b>Correo</b></label>
         <input type="email" required name="email">
 
         <label for="psw"><b>Contrasena</b></label>
         <input type="password" required name="psw">
 
-        <label for="psw"><b>Repetir Contrasena:</b></label>
+        <label for="repeatPsw"><b>Repetir Contrasena:</b></label>
         <input type="password" required name="repeatPsw">
 
-        <label for="psw"><b>Direccion:</b></label>
-        <textarea rows="5" style="width: 350px;"></textarea>
+        <label for="address"><b>Direccion:</b></label>
+        <textarea rows="5" style="width: 350px;" name="address"></textarea>
         <hr>
         <div style="text-align: right;"><button type="submit" class="btn">Cargar</button></div>
     </div>
-
+  </div>
 
 
 </body>
-
+<script type="text/javascript">
+  var loginFlag = "<?php echo $_SESSION['LOGIN']; ?>";
+  //alert(loginFlag);
+  if (loginFlag == 'true') {
+    document.getElementById("signinBtn").style.display = "none";
+    document.getElementById("registerBtn").style.display = "none";    
+    document.getElementById("dashBtn").style.display = "inline";    
+    document.getElementById("signoutBtn").style.display = "inline";
+  } else {
+    document.getElementById("signinBtn").style.display = "inline";
+    document.getElementById("registerBtn").style.display = "inline";
+    document.getElementById("dashBtn").style.display = "none";
+    document.getElementById("signoutBtn").style.display = "none";
+  }
+</script>
 </html>

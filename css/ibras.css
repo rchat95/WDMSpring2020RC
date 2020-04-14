@@ -378,6 +378,9 @@ p{
 .open-button {
     cursor: pointer;
   }
+  .hide{
+      display: none;
+  }
   .form-popup {
     display: none;
     position: absolute;

@@ -1,3 +1,23 @@
+<?php
+include 'connect.php';
+session_start();
+
+#$_SESSION['LOGIN'] = 'false';
+
+function signOut()
+{
+  session_unset();
+  session_destroy();
+  $_SESSION['LOGIN'] = 'false';
+  #function_alert("Signed out successfully!");
+  #navigateTo("http://rxc2199.uta.cloud/assignment2_RC/index.php");
+}
+if (isset($_GET['signout'])) {
+  signOut();
+}
+
+#print_r($_SESSION['LOGIN']);
+?>
 <!DOCTYPE HTML>
 <html>
 <html lang="en">
@@ -77,15 +97,23 @@
         alert("Password is required!");
         return false;
       }
+      if (passWord.length < 8 || passWord.length > 10) {
+        alert("Password length has to be betwwen 8 to 10 characters!");
+        return false;
+      }
       if (repeatPassword != passWord) {
         alert("Passwords do not match!");
         return false;
       }
     }
+
+    function openDash() {
+      window.location.href = "http://rxc2199.uta.cloud/assignment2_RC/dashboard.php";
+    }
   </script>
 </head>
 
-<body>  
+<body>
   <div class="wrap80">
     <div id="section1">
       <div class="topnav">
@@ -95,8 +123,10 @@
         <a href="menu.php">MENU</a>
         <a class="open-button" onclick="openBlog()">BLOG</a>
         <a href="contact.php">CONTACTO</a>
-        <a class="open-button" onclick="openRegisterForm();">REGISTRO</a>
-        <a class="open-button" onclick="openForm();" style="white-space: nowrap;">INICIAR SESION</a>
+        <a id="dashBtn" class="open-button" onclick="openDash();">DASHBOARD</a>
+        <a id="signoutBtn" href="http://rxc2199.uta.cloud/assignment2_RC/index.php?signout=true">DESCONECTAR</a>
+        <a id="registerBtn" class="open-button" onclick="openRegisterForm();">REGISTRO</a>
+        <a id="signinBtn" class="open-button" onclick="openForm();" style="white-space: nowrap;">INICIAR SESION</a>
       </div>
 
       <div class="wrapper">
@@ -318,29 +348,44 @@
     </div>
 
     <div class="form-popup" id="rgForm">
-      <form class="form-container-rg" name="registerForm" method="POST" onsubmit="return SignUp()">
+      <form class="form-container-rg" name="registerForm" method="POST" onsubmit="return SignUp()" action="register.php">
         <img class="btnClose" onclick="closeRegisterForm()">
         <h1><img class="formImg"> Registro de Usuario</h1>
         <hr>
-        <label for="email"><b>Nombre y apellido:</b></label>
+        <label for="uName"><b>Nombre y apellido:</b></label>
         <input type="text" required name="uName">
 
-        <label for="psw"><b>Correo</b></label>
+        <label for="email"><b>Correo</b></label>
         <input type="email" required name="email">
 
         <label for="psw"><b>Contrasena</b></label>
         <input type="password" required name="psw">
 
-        <label for="psw"><b>Repetir Contrasena:</b></label>
+        <label for="repeatPsw"><b>Repetir Contrasena:</b></label>
         <input type="password" required name="repeatPsw">
 
-        <label for="psw"><b>Direccion:</b></label>
-        <textarea rows="5" style="width: 350px;"></textarea>
+        <label for="address"><b>Direccion:</b></label>
+        <textarea rows="5" style="width: 350px;" name="address"></textarea>
         <hr>
         <div style="text-align: right;"><button type="submit" class="btn">Cargar</button></div>
     </div>
-  </div>  
+  </div>
 </body>
 
+<script type="text/javascript">
+  var loginFlag = "<?php echo $_SESSION['LOGIN']; ?>";
+  //alert(loginFlag);
+  if (loginFlag == 'true') {
+    document.getElementById("signinBtn").style.display = "none";
+    document.getElementById("registerBtn").style.display = "none";    
+    document.getElementById("dashBtn").style.display = "inline";    
+    document.getElementById("signoutBtn").style.display = "inline";
+  } else {
+    document.getElementById("signinBtn").style.display = "inline";
+    document.getElementById("registerBtn").style.display = "inline";
+    document.getElementById("dashBtn").style.display = "none";
+    document.getElementById("signoutBtn").style.display = "none";
+  }
+</script>
 
 </html>
