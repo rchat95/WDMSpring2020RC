@@ -168,7 +168,7 @@ if (isset($_GET['signout'])) {
       <p>Di hola, envianos un mensaje</p>
       <p> Envianos tus comentarios y suguerencias ustedes son importante para nosotros</p>
 
-      <form name="contactForm" method="POST" onsubmit="return SendEmail()">
+      <form name="contactForm" method="POST" onsubmit="return SendEmail()" action="sendEmail.php">
         <div>
           <input type="text" placeholder="Name" class="inputField" name="uName" size="50" style="margin-right: 2%;" required>
           <input type="email" placeholder="Email" name="email" class="inputField" size="50" required>
