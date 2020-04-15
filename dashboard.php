@@ -22,6 +22,28 @@ if (isset($_GET['signout'])) {
   signOut();
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  session_start();
+  $email = $_SESSION['EMAIL'];
+  $sql = "INSERT INTO ORDERS (ORDERITEMS, ORDERAMT, USER_EMAIL) VALUES (?,?,?)";
+
+  $orderItems = test_input($_POST["orderItems"]); #Comma separated order items
+  $orderCost = test_input($_POST["orderCost"]); #Order Cost
+  #echo $orderItems;
+
+  $pdo->prepare($sql)->execute([$orderItems, $orderCost, $email]);
+
+  /*
+  while ($row = $result->fetch()) {
+    $userName =  $row['UserName'];
+  }
+  */
+  //Add order (UserID, Items, Amount)
+  #function_alert("PHP Self Script Called");
+  #function_alert("The order item list is: ".$orderItems." and the order cost is = ".$orderCost);
+  function_alert("Order Created Successfully!");
+}
+
 
 ?>
 <!DOCTYPE HTML>
@@ -34,6 +56,14 @@ if (isset($_GET['signout'])) {
   <link rel="shortcut icon" type="image/png" href="images/Burguer.png">
 
   <script type="text/javascript">
+    var itemArr = [];
+    var orderCost = convert_to_float(0.0);
+
+    function convert_to_float(a) {
+      var floatValue = +(a);
+      return floatValue;
+    }
+
     function editProfile() {
       document.getElementById("profileBtn").style.backgroundColor = "red";
       document.getElementById("addressBtn").style.backgroundColor = "transparent";
@@ -56,6 +86,9 @@ if (isset($_GET['signout'])) {
       document.getElementById("orderBtn").style.backgroundColor = "red";
       document.getElementById("historyBtn").style.backgroundColor = "transparent";
       document.getElementById("offerBtn").style.backgroundColor = "transparent";
+      document.getElementById("offerPhoto").style.display = "none";
+      document.getElementById("orderBurgerDiv").style.display = "block";  
+      document.getElementById("orderHistory").style.display = "none";     
     }
 
     function orderHistory() {
@@ -63,7 +96,11 @@ if (isset($_GET['signout'])) {
       document.getElementById("addressBtn").style.backgroundColor = "transparent";
       document.getElementById("orderBtn").style.backgroundColor = "transparent";
       document.getElementById("historyBtn").style.backgroundColor = "red";
-      document.getElementById("offerBtn").style.backgroundColor = "transparent";
+      document.getElementById("offerBtn").style.backgroundColor = "transparent";      
+      document.getElementById("orderHistory").style.display = "block";  
+      document.getElementById("offerPhoto").style.display = "none";
+      document.getElementById("orderBurgerDiv").style.display = "none"; 
+
     }
 
     function viewOffers() {
@@ -72,6 +109,46 @@ if (isset($_GET['signout'])) {
       document.getElementById("orderBtn").style.backgroundColor = "transparent";
       document.getElementById("historyBtn").style.backgroundColor = "transparent";
       document.getElementById("offerBtn").style.backgroundColor = "red";
+      document.getElementById("offerPhoto").style.display = "block";
+      document.getElementById("orderBurgerDiv").style.display = "none";   
+      document.getElementById("orderHistory").style.display = "none";  
+      document.getElementById("orderHistory").style.display = "none";        
+      
+    }
+
+    function orderBurg() {
+      var burgerList = document.getElementById("burgerList");
+      var item = burgerList.options[burgerList.selectedIndex].value;
+      orderCost = convert_to_float(document.getElementById("cost").innerHTML);
+      alert(item);
+      itemArr.push(item);
+      document.getElementById("orderItems").value = itemArr;
+      if (item == "Mixta") {
+        orderCost += convert_to_float(20.00);
+        document.getElementById("cost").innerHTML = orderCost;
+      }
+      if (item == "Pollo") {
+        orderCost += convert_to_float(12.00);
+        document.getElementById("cost").innerHTML = orderCost;
+      }
+      if (item == "Carne") {
+        orderCost += convert_to_float(12.00);
+        document.getElementById("cost").innerHTML = orderCost;
+      }
+      if (item == "De Pollo") {
+        orderCost += convert_to_float(12.00);
+        document.getElementById("cost").innerHTML = orderCost;
+      }
+      document.getElementById("orderCost").value = document.getElementById("cost").innerHTML;
+    }
+
+    function checkOrder() {
+      var cost = document.getElementById("cost").textContent;
+      if (cost <= 0.00) {
+        alert("Please add atleast 1 item!");
+        return false;
+      }
+      //alert("The item array is: " + itemArr);            
     }
   </script>
 
@@ -109,13 +186,53 @@ if (isset($_GET['signout'])) {
         <div class="btn-group">
           <a class="button" id="profileBtn" onclick="editProfile();">Edit Profile</a>
           <a class="button" id="addressBtn" onclick="editAddress();">Edit Address</a>
-          <a class="button" id="orderBtn" onclick="quickOrder();">Quick Order</a>
+          <a class="button-sel" id="orderBtn" onclick="quickOrder();">Quick Order</a>
           <a class="button" id="historyBtn" onclick="orderHistory();">Order History</a>
-          <a class="button-sel" id="offerBtn" onclick="viewOffers()">Browse Offers</a>
+          <a class="button" id="offerBtn" onclick="viewOffers()">Browse Offers</a>
         </div>
-        <div id="contentDiv">
-          <img id="offerPhoto" style="margin-top: 20px;">
-        </div>
+        <form name="orderForm" method="POST" onsubmit="return checkOrder()" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+          <input id="orderItems" class="hide" name="orderItems">
+          <div id="contentDiv">
+            <img id="offerPhoto" style="margin-top: 20px; display: none;">
+            <div id="orderBurgerDiv">
+              <img id="orderImg">
+              <div id="addBurgerDiv">
+                <label for="burgerList" id="selectLabel">Select burger:</label>
+                <select id="burgerList" name="burgers">
+                  <option>Mixta</option>
+                  <option>Pollo</option>
+                  <option>Carne</option>
+                  <option>De Pollo</option>
+                </select>
+                <button type="button" style="margin-left: 0.5em;" onclick="orderBurg()">
+                  ADD
+                </button>
+              </div>
+              <div id="orderDiv">
+                <label style="display: block; padding-left: 1em;">Total Amount: $<label id="cost">0</label></label>
+                <input id="orderCost" class="hide" name="orderCost">
+                <button type="submit" class="btn">
+                  PLACE ORDER
+                </button>
+              </div>
+            </div>
+            <div id="orderHistory" class="hide">
+              <table id="customers">
+                <tr>
+                  <th>Select</th>
+                  <th>Order ID</th>
+                  <th>Items</th>
+                  <th>Price</th>
+                </tr>
+                        
+              </table>
+              <div id="orderHistoryModify">
+                <!--<button style="margin-right: 10px; background-color: green;">Edit</button>-->
+                <button type="button" id="orderDeleteBtn" style="background-color: red;">Delete</button>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
     <div class="section8_4">
@@ -140,9 +257,6 @@ if (isset($_GET['signout'])) {
       </div>
     </div>
   </div>
-
-
-
 </body>
 
 </html>

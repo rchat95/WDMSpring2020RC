@@ -1,11 +1,11 @@
 <?php
 $name = $email = $psw = $address = "";
-try
-{
+
+try {
   include 'connect.php';
   session_start();
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = test_input($_POST["uName"]);  
+    $name = test_input($_POST["uName"]);
     $email = test_input($_POST["email"]);
     $psw = test_input($_POST["psw"]);
     $address = test_input($_POST["address"]);
@@ -13,12 +13,14 @@ try
     $pdo->prepare($sql)->execute([$name, $email, $psw, $address, 0]);
     $_SESSION['EMAIL'] = $email;
     $_SESSION['LOGIN'] = 'true';
+    sendRegEmail($name, $email);
+    function_alert("Email sent to " . $email);
     navigateTo("http://rxc2199.uta.cloud/assignment2_RC/dashboard.php");
-    }
-    $pdo = null;
   }
-catch (PDOException $e)
-{
+  
+
+  $pdo = null;
+} catch (PDOException $e) {
   die($e->getMessage());
 }
 ?>

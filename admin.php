@@ -15,7 +15,7 @@
       <div class="topnav">
         <a href="index.php" class="header-anchor"><img class="header-brand"></a>
         <a href="#">SHOP INVENTORY</a>
-        <a href="#">ORDER MANAGEMENT SYSTEM</a>
+        <a class="active" href="#">ORDER MANAGEMENT SYSTEM</a>
         <a href="#">EMPLOYEE PORTAL</a>
         <a id="signoutBtn" href="http://rxc2199.uta.cloud/assignment2_RC/index.php?signout=true">DESCONECTAR</a>
       </div>
@@ -25,13 +25,13 @@
     </div>
 
     <div class="section9_2">
-      <h1>Shop Inventory</h1>
+      <h1>Customer Orders</h1>
       <table id="customers">
         <tr>
           <th>Select</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Qty</th>
+          <th>Email</th>
+          <th>Items</th>
+          <th>Price</th>
         </tr>
         <tr>
           <td><input type="checkbox"></td>
@@ -71,7 +71,7 @@
         </tr>
       </table>
       <div style="margin-top: 30px;">
-        <button style="margin-right: 10px; background-color: green;">Edit</button>
+        <!--<button style="margin-right: 10px; background-color: green;">Edit</button>-->
         <button>Delete</button>
       </div>
     </div>

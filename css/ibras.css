@@ -1,33 +1,38 @@
-@font-face{
+@font-face {
     font-family: 'beyond_the_mountains';
     src: url('../fonts/beyond_the_mountains.ttf')
 }
-@font-face{
+
+@font-face {
     font-family: 'OpenSans';
     src: url('../fonts/OpenSans-Regular.ttf')
 }
 
-#mainBody{
+#mainBody {
     padding: 0 10%;
 }
-.wrap80{
-    width: 80%;   
+
+.wrap80 {
+    width: 80%;
     margin: 0 auto;
 }
-.wrapper{    
+
+.wrapper {
     text-align: center;
     padding: 0 12%;
 }
-#section1{    
+
+#section1 {
     height: 100vh;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
     margin-top: -10px;
     /*position: relative;*/
     /*padding-top: -80px;*/
-    /*margin-right: -30px;*/    
+    /*margin-right: -30px;*/
 }
-#section1:before{
+
+#section1:before {
     content: ' ';
     display: block;
     position: absolute;
@@ -40,30 +45,34 @@
     background-position: center;
     background-size: cover;
 }
-#section1 div{
+
+#section1 div {
     text-align: center;
     z-index: 2;
     position: relative;
     color: #fff;
-} 
-h1, h2, h3{
+}
+
+h1, h2, h3 {
     font-family: beyond_the_mountains;
 }
 
-#mainTitle{
+#mainTitle {
     font-size: 7vw;
     margin-top: -1%;
 }
 
-.secTitle{
+.secTitle {
     font-size: 2.8vw;
     margin-top: -0.2em;
 }
-h4{
+
+h4 {
     font-size: 20px;
     padding-top: 130px;
 }
-body{
+
+body {
     font-family: OpenSans;
     color: white;
     overflow-x: hidden;
@@ -73,7 +82,8 @@ body{
     font-weight: 400;
     line-height: 1.667;
 }
-button{
+
+button {
     background-color: #EF0031;
     border: none;
     color: white;
@@ -85,32 +95,38 @@ button{
     margin-top: -10px;
     /*margin-bottom: 200px;*/
 }
-p{
+
+p {
     color: #ffffff;
 }
-.topnav {    
+
+.topnav {
     padding-top: 2.5%;
     background-color: #000000;
     overflow: hidden;
     height: 10vmin;
     background: rgba(0, 0, 0, 0.6);
     padding-right: 10%;
-  }
+}
+
 .topnav a {
     float: center;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 15px;    
+    font-size: 15px;
 }
-.topnav a:hover{
+
+.topnav a:hover {
     color: red;
 }
-.topnav .active{
+
+.topnav .active {
     color: red;
 }
-.header-brand{
+
+.header-brand {
     content: url("../images/5.png");
     width: 150px;
     height: 100px;
@@ -119,49 +135,57 @@ p{
     margin-top: -20px;
     /*margin-right: -15%;*/
 }
-#section2{
+
+#section2 {
     height: 65vh;
     padding-top: 2em;
     overflow: hidden;
 }
-#sec2leftimg{
+
+#sec2leftimg {
     float: left;
     height: 20em;
 }
-#sec2rightimg{
+
+#sec2rightimg {
     float: right;
     height: 20em;
 }
-#sec2rightimg::after{
+
+#sec2rightimg::after {
     clear: both;
 }
+
 .row {
     display: flex;
     margin-top: -5%;
-    
-  }
+}
+
 .column {
     flex: 50%;
     padding: 5%;
     text-align: left;
 }
-#section4 .row{
+
+#section4 .row {
     display: flex;
     margin: 0px 150px;
 }
-#section4 .column{
+
+#section4 .column {
     flex: 50%;
     padding: 50px;
     text-align: left;
     width: 100px;
-    
 }
-#section3{
+
+#section3 {
     min-height: 120vh;
     position: relative;
     overflow: hidden;
 }
-#section3:before{
+
+#section3:before {
     content: ' ';
     display: block;
     position: absolute;
@@ -174,6 +198,7 @@ p{
     background-position: center;
     background-size: cover;
 }
+
 #section3 div {
     /*padding: 50px;*/
     text-align: center;
@@ -181,6 +206,7 @@ p{
     position: relative;
     color: #fff;
 }
+
 .grid-container {
     margin-top: ;
     display: grid;
@@ -188,45 +214,51 @@ p{
     /*background-color: #2196F3;*/
     padding: 10px;
 }
+
 .grid-item {
     padding: 20px;
     /*font-size: 30px;*/
     text-align: center;
     margin-bottom: -105px;
-  } 
+}
+
 .grid-item-1 {
     padding: 20px;
     /*font-size: 30px;*/
     text-align: center;
     margin-top: 90px;
-  } 
-#brgimg1{
-      width: 40%;
-      height: 40%;
-      content: url("../images/burguer1.png"); 
-      position: relative;    
-      display: block; 
-      margin-left: 70px;
 }
-#brgimg2{
+
+#brgimg1 {
     width: 40%;
     height: 40%;
-    content: url("../images/burguer2.png");    
+    content: url("../images/burguer1.png");
     position: relative;
     display: block;
     margin-left: 70px;
 }
-#brgimg3{
+
+#brgimg2 {
     width: 40%;
     height: 40%;
-    content: url("../images/burguer3.png");   
-    position: relative; 
+    content: url("../images/burguer2.png");
+    position: relative;
     display: block;
     margin-left: 70px;
 }
-.gridBtn{
-    background-color: black; 
-    color: red; 
+
+#brgimg3 {
+    width: 40%;
+    height: 40%;
+    content: url("../images/burguer3.png");
+    position: relative;
+    display: block;
+    margin-left: 70px;
+}
+
+.gridBtn {
+    background-color: black;
+    color: red;
     border: none;
     padding: 16px 16px;
     text-align: center;
@@ -235,25 +267,30 @@ p{
     font-size: 14px;
     margin: 4px 2px;
     transition-duration: 0.4s;
-    cursor: pointer;    
+    cursor: pointer;
     border: 2px solid #f44336;
     width: max-content;
 }
-.gridBtn:hover{
+
+.gridBtn:hover {
     background-color: #f44336;
     color: white;
 }
-#gridMenuBtn{
+
+#gridMenuBtn {
     margin-top: 50px;
 }
-#section4{
+
+#section4 {
     height: 110vh;
     padding-top: 5em;
 }
-.btn-group{
+
+.btn-group {
     border-bottom: 1.5px solid red;
     margin: 10px 150px 0px 150px;
 }
+
 .btn-group .button {
     background-color: transparent;
     border: none;
@@ -264,8 +301,9 @@ p{
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-  }
-  .btn-group .button-sel{
+}
+
+.btn-group .button-sel {
     border: none;
     color: white;
     padding: 15px 10px;
@@ -275,80 +313,94 @@ p{
     font-size: 16px;
     cursor: pointer;
     background-color: red;
-  }  
-  .btn-group .button:hover {
+}
+
+.btn-group .button:hover {
     background-color: red;
-  }
-  .btn-group::after{
-      clear: both;   
-  }
-#tdImg1{
-      content: url("../images/hamburguesa1.jpg");
-      width: 100%;      
-      height: auto;
-      position: relative;
 }
-#tdImg2{
-    content: url("../images/hamburguesa3.jpg");
-    width: 100%;      
-    height: auto;
-    position: relative; 
+
+.btn-group::after {
+    clear: both;
 }
-#tdImg3{
-    content: url("../images/hamburguesa5.jpg");
-    width: 100%;      
+
+#tdImg1 {
+    content: url("../images/hamburguesa1.jpg");
+    width: 100%;
     height: auto;
     position: relative;
 }
-#tdImg4{
+
+#tdImg2 {
+    content: url("../images/hamburguesa3.jpg");
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+#tdImg3 {
+    content: url("../images/hamburguesa5.jpg");
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+#tdImg4 {
     content: url("../images/hamburguesa7.jpg");
-    width: 100%;      
+    width: 100%;
     height: auto;
-    position: relative;     
+    position: relative;
 }
-#tdImg5{
+
+#tdImg5 {
     content: url("../images/hamburguesa2.jpg");
-    width: 100%;      
+    width: 100%;
     height: auto;
-    position: relative;      
+    position: relative;
 }
-#tdImg6{
+
+#tdImg6 {
     content: url("../images/hamburguesa4.jpg");
-    width: 100%;      
+    width: 100%;
     height: auto;
-    position: relative;  
+    position: relative;
 }
-#tdImg7{
+
+#tdImg7 {
     content: url("../images/hamburguesa6.jpg");
-    width: 100%;      
+    width: 100%;
     height: auto;
-    position: relative;    
+    position: relative;
 }
-#tdImg8{
+
+#tdImg8 {
     content: url("../images/hamburguesa8.jpg");
-    width: 100%;      
+    width: 100%;
     height: auto;
-    position: relative;     
-}  
-  .tdPrice{
-      color: red;
-  }
-  .tdText{
-      text-align: left;
-      width: 14em;
-      padding-left: 0.5em;
-      
-  }
- .spacer{
-     height: 30px;
- }
- .footer{
-     height: 80vh;
-     position: relative;
-     overflow: hidden;
-     text-align: center;     
- }
- .footer::before{
+    position: relative;
+}
+
+.tdPrice {
+    color: red;
+}
+
+.tdText {
+    text-align: left;
+    width: 14em;
+    padding-left: 0.5em;
+}
+
+.spacer {
+    height: 30px;
+}
+
+.footer {
+    height: 80vh;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.footer::before {
     content: ' ';
     display: block;
     position: absolute;
@@ -360,44 +412,49 @@ p{
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
- }
- #footerContent{
-     margin-top: 10px;
-     text-align: center;
-     font-size: 0.7em;
- }
+}
 
- #logoImg{
-     content: url("../images/5.png");
-     text-align: center;
-     margin-top: 3%;
- }
- .footerGreen{
-     color: lightgreen;
- }
+#footerContent {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.7em;
+}
+
+#logoImg {
+    content: url("../images/5.png");
+    text-align: center;
+    margin-top: 3%;
+}
+
+.footerGreen {
+    color: lightgreen;
+}
+
 .open-button {
     cursor: pointer;
-  }
-  .hide{
-      display: none;
-  }
-  .form-popup {
+}
+
+.hide {
+    display: none;
+}
+
+.form-popup {
     display: none;
     position: absolute;
-    top: 10%;    
+    top: 10%;
     text-align: left;
     left: 40%;
     border: 3px solid #f1f1f1;
     z-index: 9;
-  }
-  
-  .form-container {
+}
+
+.form-container {
     max-width: 300px;
     padding: 10px;
     background-color: white;
-  }
+}
 
-  .form-container input[type=text], .form-container input[type=password], .form-container input[type=email] {
+.form-container input[type=text], .form-container input[type=password], .form-container input[type=email] {
     width: 80%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -405,57 +462,62 @@ p{
     background: white;
     outline: black;
     border-radius: 5pt;
-  }
-  
-  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+}
+
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
     background-color: white;
     outline: black;
     border-radius: 2pt;
-  }
-  
-  .form-container .btn {
+}
+
+.form-container .btn {
     background-color: red;
     color: white;
     padding: 16px 20px;
     border: none;
     cursor: pointer;
     width: 40%;
-    margin-bottom:5px;
+    margin-bottom: 5px;
     opacity: 0.8;
     margin-top: 10px;
-  }
-  
-  .form-container .btn:hover, .open-button:hover {
+}
+
+.form-container .btn:hover, .open-button:hover {
     opacity: 1;
-  }
-  .form-container label{
-      color: black;
-  }
-  .form-container h1{
-      color: black;
-      font-size: 35px;
-  }
-  .formImg{
-      content: url("../images/Burguer.png");
-      width: 15%;
-      height: auto;
-  }
-  .form-popup {
+}
+
+.form-container label {
+    color: black;
+}
+
+.form-container h1 {
+    color: black;
+    font-size: 35px;
+}
+
+.formImg {
+    content: url("../images/Burguer.png");
+    width: 15%;
+    height: auto;
+}
+
+.form-popup {
     display: none;
     position: absolute;
-    top: 12%;    
+    top: 12%;
     text-align: left;
     left: 38%;
     border: 3px solid #f1f1f1;
     z-index: 9;
-  }
-  .form-container-rg {
+}
+
+.form-container-rg {
     max-width: 400px;
     padding: 10px;
     background-color: white;
-  }
+}
 
-  .form-container-rg input[type=text], .form-container-rg input[type=password], .form-container-rg input[type=email]{
+.form-container-rg input[type=text], .form-container-rg input[type=password], .form-container-rg input[type=email] {
     width: 80%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -463,50 +525,54 @@ p{
     background: white;
     outline: black;
     border-radius: 5pt;
-  }
-  
-  .form-container-rg input[type=text]:focus, .form-container input[type=password]:focus {
+}
+
+.form-container-rg input[type=text]:focus, .form-container input[type=password]:focus {
     background-color: white;
     outline: black;
     border-radius: 2pt;
-  }
-  
-  .form-container-rg .btn {
+}
+
+.form-container-rg .btn {
     background-color: red;
     color: white;
     padding: 16px 20px;
     border: none;
     cursor: pointer;
     width: 40%;
-    margin-bottom:5px;
+    margin-bottom: 5px;
     opacity: 0.8;
     margin-top: 10px;
-  }
-  
-  .form-container-rg .btn:hover, .open-button:hover {
+}
+
+.form-container-rg .btn:hover, .open-button:hover {
     opacity: 1;
-  }
-  .form-container-rg label{
-      color: black;
-  }
-  .form-container-rg h1{
-      color: black;
-      font-size: 35px;
-  }
-  .btnClose{
-      content: url("../images/close.png");
-      width: 5%;
-      height: auto;
-      float: right;
-      
-  }
-  .section2_1{
-      height: 60vh;
-      position: relative;
-      overflow: hidden;
-      margin-top: -10px;
-  }
-  .section2_1:before{
+}
+
+.form-container-rg label {
+    color: black;
+}
+
+.form-container-rg h1 {
+    color: black;
+    font-size: 35px;
+}
+
+.btnClose {
+    content: url("../images/close.png");
+    width: 5%;
+    height: auto;
+    float: right;
+}
+
+.section2_1 {
+    height: 60vh;
+    position: relative;
+    overflow: hidden;
+    margin-top: -10px;
+}
+
+.section2_1:before {
     content: ' ';
     display: block;
     position: absolute;
@@ -519,68 +585,80 @@ p{
     background-position: center;
     background-size: cover;
 }
-.section2_1 div{
+
+.section2_1 div {
     text-align: center;
     z-index: 2;
     position: relative;
     color: #fff;
-} 
-#sec2Title{
+}
+
+#sec2Title {
     font-size: 50px;
 }
-#sec2header{
+
+#sec2header {
     padding-top: 50px;
 }
-.section2_2{
+
+.section2_2 {
     height: 120vh;
     position: relative;
     overflow: hidden;
     padding: 0% 12%;
     margin-top: 10%;
 }
-.section2_2 .row{
+
+.section2_2 .row {
     margin-bottom: 5%;
 }
-.section2_2 .row::after{
+
+.section2_2 .row::after {
     content: "";
     clear: both;
     display: table;
 }
-.section2_2 .column{
+
+.section2_2 .column {
     float: left;
     width: 50%;
     padding: 10px;
 }
-#imgLeft{
+
+#imgLeft {
     content: url("../images/hamburguesa1.jpg");
     width: 100%;
     height: auto;
-    
 }
-#imgRight{
+
+#imgRight {
     content: url("../images/hamburguesa2.jpg");
     width: 100%;
-    height: auto;    
+    height: auto;
 }
-#btn2{    
+
+#btn2 {
     background-color: green;
 }
+
 .btnrow {
     display: flex;
     padding: 0 25%;
-  }
+}
+
 .btncolumn {
     flex: 50%;
-    
     text-align: center;
     width: 100px;
 }
-.section2_3{
+
+.section2_3 {
     height: 90vh;
     overflow: hidden;
     position: relative;
 }
-.section2_3::before{
+
+.section2_3::before {
     content: ' ';
     display: block;
     position: absolute;
@@ -592,226 +670,252 @@ p{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
 }
-.section2_3 div{
+
+.section2_3 div {
     text-align: left;
     z-index: 2;
     position: relative;
     color: #fff;
-} 
-.section2_3 .row{ 
+}
+
+.section2_3 .row {
     padding: 0 10%;
 }
-.section2_3 .row::after{
+
+.section2_3 .row::after {
     content: "";
     clear: both;
     display: table;
 }
-.section2_3 h4{
+
+.section2_3 h4 {
     padding-top: 0%;
 }
+
 /*.section2_3 .column{
     float: left;
     width: 33.3%;
     padding: 10px;    
 }*/
-.clientIcon{
+
+.clientIcon {
     content: url("../images/client.png");
     width: 20%;
     height: auto;
 }
-.section2_4{
+
+.section2_4 {
     height: 35vh;
     position: relative;
     overflow: hidden;
     padding: 5% 10%;
-
 }
-#hugeBanner{
+
+#hugeBanner {
     font-size: 400%;
-
 }
-.section3_1{
+
+.section3_1 {
     height: 60vh;
     position: relative;
     overflow: hidden;
     margin-top: -10px;
 }
-.section3_1:before{
-  content: ' ';
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  opacity: 0.6;
-  background-image: url("../images/hamburguesa5.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+
+.section3_1:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.6;
+    background-image: url("../images/hamburguesa5.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
-.section3_1 div{
-  text-align: center;
-  z-index: 2;
-  position: relative;
-  color: #fff;
-} 
-.section3_2{
+
+.section3_1 div {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    color: #fff;
+}
+
+.section3_2 {
     padding-top: 5%;
     height: 130vh;
 }
-.section3_2 div{
+
+.section3_2 div {
     padding: 40px;
     text-align: center;
     z-index: 2;
     position: relative;
     color: #fff;
 }
-.section3_2 h1{
+
+.section3_2 h1 {
     font-size: 40px;
     margin-bottom: -120px;
 }
 
-.section3_2 #brgimg1{
+.section3_2 #brgimg1 {
     width: 100%;
     height: 100%;
-    content: url("../images/burguer1.png"); 
-    position: relative;    
-    display: block; 
+    content: url("../images/burguer1.png");
+    position: relative;
+    display: block;
     margin-left: -0px;
-    
-}
-.section3_2 #brgimg2{
-  width: 100%;
-  height: 100%;
-  content: url("../images/burguer2.png");    
-  position: relative;
-  display: block;
-  margin-left: -0px;
-  
-}
-.section3_2 #brgimg3{
-  width: 100%;
-  height: 100%;
-  content: url("../images/burguer3.png");   
-  position: relative; 
-  display: block;
-  margin-left: -0px;
-  
-}
-.gridBtn{
-  background-color: black; 
-  color: red; 
-  border: none;
-  padding: 16px 16px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;    
-  border: 2px solid #f44336;
-  width: max-content;
 }
 
-.section5_1{
+.section3_2 #brgimg2 {
+    width: 100%;
+    height: 100%;
+    content: url("../images/burguer2.png");
+    position: relative;
+    display: block;
+    margin-left: -0px;
+}
+
+.section3_2 #brgimg3 {
+    width: 100%;
+    height: 100%;
+    content: url("../images/burguer3.png");
+    position: relative;
+    display: block;
+    margin-left: -0px;
+}
+
+.gridBtn {
+    background-color: black;
+    color: red;
+    border: none;
+    padding: 16px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid #f44336;
+    width: max-content;
+}
+
+.section5_1 {
     height: 65vh;
     position: relative;
     overflow: hidden;
     margin-top: -10px;
 }
-.section5_1:before{
-  content: ' ';
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  opacity: 0.6;
-  background-image: url("../images/hamburguesa7.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+
+.section5_1:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.6;
+    background-image: url("../images/hamburguesa7.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
-.section5_1 div{
+
+.section5_1 div {
     text-align: center;
     z-index: 2;
     position: relative;
     color: #fff;
-  } 
-  .section5_2{
-      height: 100vh;
-      padding-top: 5%;
-  }
+}
 
-  .section5_2 div{
+.section5_2 {
+    height: 100vh;
+    padding-top: 5%;
+}
+
+.section5_2 div {
     padding: 10px;
     text-align: center;
     z-index: 2;
     position: relative;
     color: #fff;
 }
+
 ::-webkit-input-placeholder {
     font-style: italic;
- }
- :-moz-placeholder {
-    font-style: italic;  
- }
- ::-moz-placeholder {
-    font-style: italic;  
- }
- :-ms-input-placeholder {  
-    font-style: italic; 
- }
- .inputField{
+}
+
+:-moz-placeholder {
+    font-style: italic;
+}
+
+::-moz-placeholder {
+    font-style: italic;
+}
+
+:-ms-input-placeholder {
+    font-style: italic;
+}
+
+.inputField {
     padding: 10px 10px;
- }
- #contactMessage{
-     width: 52%;
- }
- #contactRow3{
-     margin-bottom: 2%;
- }
- .section8_1{
+}
+
+#contactMessage {
+    width: 52%;
+}
+
+#contactRow3 {
+    margin-bottom: 2%;
+}
+
+.section8_1 {
     height: 60vh;
     position: relative;
     overflow: hidden;
     margin-top: -10px;
 }
-.section8_1:before{
-  content: ' ';
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  opacity: 0.6;
-  background-image: url("../images/hamburguesa5.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+
+.section8_1:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.6;
+    background-image: url("../images/hamburguesa5.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
-.section8_1 div{
-  text-align: center;
-  z-index: 2;
-  position: relative;
-  color: #fff;
-} 
-.section8_2{
+
+.section8_1 div {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    color: #fff;
+}
+
+.section8_2 {
     height: 50vh;
     overflow: hidden;
     position: relative;
     padding: 5px 30px;
 }
-.section8_3{
-    height: 100vh;
+
+.section8_3 {
+    min-height: 100vh;
     overflow: hidden;
     position: relative;
-    
 }
-.section8_3::before{
+
+.section8_3::before {
     content: ' ';
     display: block;
     position: absolute;
@@ -823,107 +927,156 @@ p{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
 }
-.section8_3 div{
+
+.section8_3 div {
     text-align: left;
     z-index: 2;
     position: relative;
-    color: #fff;   
-} 
-#ProfilePhoto
-{
+    color: #fff;
+}
+
+#ProfilePhoto {
     content: url("../images/client.png");
     width: 10%;
     height: auto;
     float: center;
 }
-#offerPhoto{
+
+#offerPhoto {
     content: url("../images/offer.jpg");
     width: 60%;
     height: auto;
-    float: center;
+    position: relative;
+    left: 20%;
 }
-#contentDiv{
+
+#contentDiv {
     text-align: center;
 }
-.section8_4{
+
+.section8_4 {
     height: 75vh;
     overflow: hidden;
     position: relative;
     padding: 50px 80px 0px 50px;
 }
-#appImg{
+
+#appImg {
     content: url("../images/appImg.png");
     width: 45%;
     height: auto;
     float: right;
 }
-#qrImg{
+
+#qrImg {
     content: url("../images/qr.png");
     width: 20%;
     height: auto;
     float: left;
     padding-top: 70px;
 }
-.section9_1{
+
+.section9_1 {
     height: 60vh;
     position: relative;
     overflow: hidden;
     margin-top: -10px;
 }
-.section9_1:before{
-  content: ' ';
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  opacity: 0.6;
-  background-image: url("../images/hamburguesa17.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+
+.section9_1:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.6;
+    background-image: url("../images/hamburguesa17.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
-.section9_1 div{
-  text-align: center;
-  z-index: 2;
-  position: relative;
-  color: #fff;
-} 
-.section9_1 h1{
+
+.section9_1 div {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    color: #fff;
+}
+
+.section9_1 h1 {
     padding-top: 50px;
 }
-.section9_2{
+
+.section9_2 {
     padding-top: 2%;
     height: 80vh;
     overflow: hidden;
     position: relative;
 }
+
 #customers {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-  }
-  
-  #customers td, #customers th {
+}
+
+#customers td, #customers th {
     border: 1px solid #ffffff;
     padding: 8px;
-  }
-  
-  #customers tr:nth-child(even){background-color: red;}
-  
-  #customers th {
+}
+
+#customers tr:nth-child(even) {
+    background-color: red;
+}
+
+#customers th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
     background-color: black;
     color: white;
-  }
+}
 
-
-
-
-  
-  
-
+#orderImg {
+    margin-top: 2em;
+    width: 15%;
+    height: 15%;
+    content: url("../images/burguer2.2.png");
+    left: 43%;
+    display: block;
+    position: relative;
+    margin-bottom: 0.5em;
+}
+#contentDiv button{
+    background-color: #44bd32;
+    padding: 5px 32px;
+    font-size: 14px;
+}
+#orderDiv{
+    margin-top: 0.5em;
+    position: relative;
+    left: 40%;    
+}
+#orderDiv button{
+    padding: 10px 32px;
+    font-size: 16px;
+    margin: 0.5em;
+}
+#burgerList{
+    padding: 5px 0px;
+}
+#addBurgerDiv{
+    left: 35%;
+}
+#orderHistory{
+    margin-top: 0.5em;
+}
+#contentDiv #orderDeleteBtn{
+    margin-top: 0.5em;
+    padding: 12px 32px;
+    font-size: 15px;
+    position: relative;
+    left: 40%;
+}

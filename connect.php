@@ -22,4 +22,18 @@
     {
         echo "<script type='text/javascript'>window.location.href='$url';</script>";
     }
+
+    function sendRegEmail($name, $email)
+    {
+        $sub = "Welcome to Ibra's - " . $name;
+        $msg = "We hope you enjoy our delicious burgers!";
+        $to = $email;
+        $email_body = "This is to confirm that you have created an account at the Ibra's Burger website.\n\n" . "Here are the details:\n\nName: $name\n\nEmail: $email\n\n$msg";
+        $headers = "From: noreply@yourdomain.com\n";
+        #$headers .= "Reply-To: $email_address";
+        mail($to, $sub, $email_body, $headers);
+        #function_alert("Email sent successfully!");
+        #navigateTo("http://rxc2199.uta.cloud/assignment2_RC/contact.php");
+        return true;
+  }
 ?>
