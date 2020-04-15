@@ -224,7 +224,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <th>Items</th>
                   <th>Price</th>
                 </tr>
-                        
+                <?php
+                  $ordersql = "SELECT ORDER_ID, ORDERITEMS, ORDERAMT
+                  FROM ORDERS WHERE USER_EMAIL = '$email'";
+                  #echo $sql;
+                  $result = $pdo->query($ordersql);
+                  while ($row = $result->fetch()) {
+                    echo "<tr>
+                          <td><input type=\"checkbox\"></td>
+                          <td>{$row['ORDER_ID']}</td>
+                          <td>{$row['ORDERITEMS']}</td>
+                          <td>{$row['ORDERAMT']}</td>
+                          </tr>";
+                  }                  
+                  #echo "<tr><td><input type=\"checkbox\"></td><td>{$email}</td><td>De Pollo, Mixta, Pollo</td><td>36</td></tr>";
+                ?>                        
               </table>
               <div id="orderHistoryModify">
                 <!--<button style="margin-right: 10px; background-color: green;">Edit</button>-->
