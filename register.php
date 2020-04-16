@@ -9,15 +9,29 @@ try {
     $email = test_input($_POST["email"]);
     $psw = test_input($_POST["psw"]);
     $address = test_input($_POST["address"]);
+
+    $sql = "SELECT Email FROM USERS";
+    $result = $pdo->query($sql);
+
+    while ($row = $result->fetch()) {
+      if($email == $row['Email'])
+      {
+        function_alert("User already exists! Try with a different Email ID");
+        navigateTo("http://rxc2199.uta.cloud/assignment2_RC/index.php");
+        die;
+      }      
+    }
+
     $sql = "INSERT INTO USERS (UserName, Email, Password, Address, IsAdmin) VALUES (?,?,?,?,?)";
     $pdo->prepare($sql)->execute([$name, $email, $psw, $address, 0]);
     $_SESSION['EMAIL'] = $email;
     $_SESSION['LOGIN'] = 'true';
+    $_SESSION['IsAdmin'] = 0;
     sendRegEmail($name, $email);
-    function_alert("Email sent to " . $email);
+    function_alert("Registration Successful! Email sent to " . $email);
     navigateTo("http://rxc2199.uta.cloud/assignment2_RC/dashboard.php");
   }
-  
+
 
   $pdo = null;
 } catch (PDOException $e) {

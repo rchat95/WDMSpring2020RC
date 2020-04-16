@@ -1,6 +1,11 @@
 <?php
 include 'connect.php';
 session_start();
+if($_SESSION['IsAdmin'] == 1)
+{
+  navigateTo("http://rxc2199.uta.cloud/assignment2_RC/admin.php");
+  die;
+}
 $email = $_SESSION['EMAIL'];
 $sql = "SELECT UserName FROM USERS WHERE Email = '$email'";
 $result = $pdo->query($sql);
@@ -8,6 +13,7 @@ $result = $pdo->query($sql);
 while ($row = $result->fetch()) {
   $userName =  $row['UserName'];
 }
+
 
 function signOut()
 {
@@ -57,6 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <script type="text/javascript">
     var itemArr = [];
+    var itemDelArr = [];
     var orderCost = convert_to_float(0.0);
 
     function convert_to_float(a) {
@@ -70,6 +77,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       document.getElementById("orderBtn").style.backgroundColor = "transparent";
       document.getElementById("historyBtn").style.backgroundColor = "transparent";
       document.getElementById("offerBtn").style.backgroundColor = "transparent";
+      document.getElementById("editAddressDiv").style.display = "none";
+      document.getElementById("orderBurgerDiv").style.display = "none";
+      document.getElementById("orderHistory").style.display = "none";
+      document.getElementById("offerPhoto").style.display = "none";
+      document.getElementById("editProfileDiv").style.display = "block";
     }
 
     function editAddress() {
@@ -78,6 +90,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       document.getElementById("orderBtn").style.backgroundColor = "transparent";
       document.getElementById("historyBtn").style.backgroundColor = "transparent";
       document.getElementById("offerBtn").style.backgroundColor = "transparent";
+      document.getElementById("offerPhoto").style.display = "none";
+      document.getElementById("orderBurgerDiv").style.display = "none";
+      document.getElementById("orderHistory").style.display = "none";
+      document.getElementById("editAddressDiv").style.display = "block";
+      document.getElementById("editProfileDiv").style.display = "none";
     }
 
     function quickOrder() {
@@ -87,8 +104,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       document.getElementById("historyBtn").style.backgroundColor = "transparent";
       document.getElementById("offerBtn").style.backgroundColor = "transparent";
       document.getElementById("offerPhoto").style.display = "none";
-      document.getElementById("orderBurgerDiv").style.display = "block";  
-      document.getElementById("orderHistory").style.display = "none";     
+      document.getElementById("orderBurgerDiv").style.display = "block";
+      document.getElementById("orderHistory").style.display = "none";
+      document.getElementById("editAddressDiv").style.display = "none";
+      document.getElementById("editProfileDiv").style.display = "none";
     }
 
     function orderHistory() {
@@ -96,11 +115,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       document.getElementById("addressBtn").style.backgroundColor = "transparent";
       document.getElementById("orderBtn").style.backgroundColor = "transparent";
       document.getElementById("historyBtn").style.backgroundColor = "red";
-      document.getElementById("offerBtn").style.backgroundColor = "transparent";      
-      document.getElementById("orderHistory").style.display = "block";  
+      document.getElementById("offerBtn").style.backgroundColor = "transparent";
+      document.getElementById("orderHistory").style.display = "block";
       document.getElementById("offerPhoto").style.display = "none";
-      document.getElementById("orderBurgerDiv").style.display = "none"; 
-
+      document.getElementById("orderBurgerDiv").style.display = "none";
+      document.getElementById("editAddressDiv").style.display = "none";
+      document.getElementById("editProfileDiv").style.display = "none";
     }
 
     function viewOffers() {
@@ -110,17 +130,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       document.getElementById("historyBtn").style.backgroundColor = "transparent";
       document.getElementById("offerBtn").style.backgroundColor = "red";
       document.getElementById("offerPhoto").style.display = "block";
-      document.getElementById("orderBurgerDiv").style.display = "none";   
-      document.getElementById("orderHistory").style.display = "none";  
-      document.getElementById("orderHistory").style.display = "none";        
-      
+      document.getElementById("orderBurgerDiv").style.display = "none";
+      document.getElementById("orderHistory").style.display = "none";
+      document.getElementById("editAddressDiv").style.display = "none";
+      document.getElementById("editProfileDiv").style.display = "none";
     }
 
     function orderBurg() {
       var burgerList = document.getElementById("burgerList");
       var item = burgerList.options[burgerList.selectedIndex].value;
       orderCost = convert_to_float(document.getElementById("cost").innerHTML);
-      alert(item);
+      //alert(item);
       itemArr.push(item);
       document.getElementById("orderItems").value = itemArr;
       if (item == "Mixta") {
@@ -149,6 +169,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         return false;
       }
       //alert("The item array is: " + itemArr);            
+    }
+
+    function CheckOrderHistForm() {
+      //alert(itemDelArr);
+      var itemSelFlag = false;
+      var inputElements = document.getElementsByTagName("input");
+      for (var i = 0; i < inputElements.length; i++)
+        if (inputElements[i].type == "checkbox") {
+          if (inputElements[i].checked) {
+            itemSelFlag = true;
+          }
+        }
+
+      if (itemSelFlag == true) {
+        //Orders have been selected to be deleted
+        document.getElementById("delItems").value = itemDelArr;
+      } else {
+        alert("Please select at least 1 item to delete!")
+        return false;
+      }
+
+    }
+
+    function itemClicked(e) {
+      var itemDelID = e.parentNode.nextElementSibling.innerHTML.trim();
+      //alert(x);
+      itemDelArr.push(itemDelID);
+    }
+
+    function CheckAddress() {
+      var newAddr = document.getElementById("userAddress").value;
+      if(newAddr.trim() == "")
+      {
+        alert("Please enter a value in the address box!");
+        return false;
+      }
+      else
+      {
+        return true;
+      }
+    }
+
+    function CheckEditFields() {
+      var newName = document.getElementById("uName").value;
+      var newEmail = document.getElementById("newEmail").value;
+      if(newName.trim() == "" && newEmail.trim() == "")
+      {
+        alert("Please enter either username or email to be updated!");
+        return false;
+      }
+      else
+      {
+        return true;
+      }
     }
   </script>
 
@@ -190,9 +264,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <a class="button" id="historyBtn" onclick="orderHistory();">Order History</a>
           <a class="button" id="offerBtn" onclick="viewOffers()">Browse Offers</a>
         </div>
-        <form name="orderForm" method="POST" onsubmit="return checkOrder()" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-          <input id="orderItems" class="hide" name="orderItems">
-          <div id="contentDiv">
+
+        <div id="contentDiv">
+          <form name="orderForm" method="POST" onsubmit="return checkOrder();" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <input id="orderItems" class="hide" name="orderItems" />
             <img id="offerPhoto" style="margin-top: 20px; display: none;">
             <div id="orderBurgerDiv">
               <img id="orderImg">
@@ -216,7 +291,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </button>
               </div>
             </div>
-            <div id="orderHistory" class="hide">
+          </form>
+          <div id="orderHistory" class="hide">
+            <form name="orderHistForm" method="POST" onsubmit="return CheckOrderHistForm()" action="delOrders.php">
+              <input id="delItems" class="hide" name="delItems" />
               <table id="customers">
                 <tr>
                   <th>Select</th>
@@ -225,27 +303,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <th>Price</th>
                 </tr>
                 <?php
-                  $ordersql = "SELECT ORDER_ID, ORDERITEMS, ORDERAMT
+                $ordersql = "SELECT ORDER_ID, ORDERITEMS, ORDERAMT
                   FROM ORDERS WHERE USER_EMAIL = '$email'";
-                  #echo $sql;
-                  $result = $pdo->query($ordersql);
-                  while ($row = $result->fetch()) {
-                    echo "<tr>
-                          <td><input type=\"checkbox\"></td>
+                #echo $sql;
+                $result = $pdo->query($ordersql);
+                while ($row = $result->fetch()) {
+                  echo "<tr>
+                          <td><input type=\"checkbox\" onclick=\"itemClicked(this)\"></td>
                           <td>{$row['ORDER_ID']}</td>
                           <td>{$row['ORDERITEMS']}</td>
                           <td>{$row['ORDERAMT']}</td>
                           </tr>";
-                  }                  
-                  #echo "<tr><td><input type=\"checkbox\"></td><td>{$email}</td><td>De Pollo, Mixta, Pollo</td><td>36</td></tr>";
-                ?>                        
+                }
+                #echo "<tr><td><input type=\"checkbox\"></td><td>{$email}</td><td>De Pollo, Mixta, Pollo</td><td>36</td></tr>";
+                ?>
               </table>
               <div id="orderHistoryModify">
                 <!--<button style="margin-right: 10px; background-color: green;">Edit</button>-->
-                <button type="button" id="orderDeleteBtn" style="background-color: red;">Delete</button>
+                <button type="submit" id="orderDeleteBtn" style="background-color: red;">Delete</button>
               </div>
-            </div>
+            </form>
           </div>
+          <div id="editAddressDiv" class="hide">
+            <form name="editAddrForm" method="POST" onsubmit="return CheckAddress();" action="editAddr.php">
+              <textarea placeholder="New Address" rows=8 id="userAddress" name="userAddress" required></textarea>
+              <button id="updateAddrBtn" type="submit">UPDATE</button>
+            </form>
+          </div>
+          <div id="editProfileDiv" class="hide">
+            <form name="editProfileForm" method="POST" onsubmit="return CheckEditFields();" action="editProfile.php">
+              <input class="editProfileInput" name="uName" id="uName" type="text" placeholder="New Name">
+              <input class="editProfileInput" name="newEmail" id="newEmail" type="email" placeholder="New Email">
+              <div id="editProfileBtnDiv">
+                <button id="editProfileBtn" type="submit">UPDATE</button>
+              </div>
+            </form>
+          </div>
+        </div>
         </form>
       </div>
     </div>

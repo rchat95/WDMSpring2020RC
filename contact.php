@@ -30,6 +30,7 @@ if (isset($_GET['signout'])) {
   <script type="text/javascript">
     function openForm() {
       document.getElementById("myForm").style.display = "block";
+      document.getElementById("rgForm").style.display = "none";
     }
 
     function closeForm() {
@@ -38,6 +39,8 @@ if (isset($_GET['signout'])) {
 
     function openRegisterForm() {
       document.getElementById("rgForm").style.display = "block";
+      document.getElementById("myForm").style.display = "none";
+
     }
 
     function closeRegisterForm() {
@@ -69,6 +72,11 @@ if (isset($_GET['signout'])) {
         alert("Password is required!");
         return false;
       }
+      else if (passWord.length < 8 || password.length > 10)
+      {
+        alert("Password length has to be between 8 to 10 characters!");
+        return false;
+      }
     }
 
     function SignUp() {
@@ -96,13 +104,17 @@ if (isset($_GET['signout'])) {
         return false;
       }
       if (passWord.length < 8 || passWord.length > 10) {
-        alert("Password length has to be betwwen 8 to 10 characters!");
+        alert("Password length has to be between 8 to 10 characters!");
         return false;
       }
       if (repeatPassword != passWord) {
         alert("Passwords do not match!");
         return false;
       }
+    }
+
+    function openDash() {
+      window.location.href = "http://rxc2199.uta.cloud/assignment2_RC/dashboard.php";
     }
 
     function SendEmail() {
@@ -134,9 +146,6 @@ if (isset($_GET['signout'])) {
         return false;
       }
 
-    }
-    function openDash() {
-      window.location.href = "http://rxc2199.uta.cloud/assignment2_RC/dashboard.php";
     }
   </script>
 </head>

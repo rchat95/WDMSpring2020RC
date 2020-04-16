@@ -35,5 +35,6 @@
         #function_alert("Email sent successfully!");
         #navigateTo("http://rxc2199.uta.cloud/assignment2_RC/contact.php");
         return true;
-  }
+    }
+    
 ?>

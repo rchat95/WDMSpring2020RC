@@ -5,7 +5,19 @@ try {
   session_start();
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = test_input($_POST["email"]);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+    {
+      #Invalid Email
+      function_alert("Invalid Email Format");
+      die;
+    }
     $psw = test_input($_POST["psw"]);
+    if(strlen($psw) < 8 || strlen($psw) > 10)
+    {
+      function_alert("Password length has to be between 8 to 10 characters");
+      navigateTo("http://rxc2199.uta.cloud/assignment2_RC/index.php?signout=true");
+      die;
+    }
     $sql = "SELECT * FROM USERS WHERE Email = '$email' AND Password = '$psw'";
     #echo $sql;
     $result = $pdo->query($sql);
@@ -31,9 +43,11 @@ try {
       $_SESSION['LOGIN'] = 'true';
       #Check type of user
       if($IsAdmin == 1){
+        $_SESSION['IsAdmin'] = 1;
         navigateTo("http://rxc2199.uta.cloud/assignment2_RC/admin.php");
       }
       else{
+        $_SESSION['IsAdmin'] = 0;
         navigateTo("http://rxc2199.uta.cloud/assignment2_RC/dashboard.php");
       }
     }
