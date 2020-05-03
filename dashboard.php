@@ -162,6 +162,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       document.getElementById("orderCost").value = document.getElementById("cost").innerHTML;
     }
 
+    function clearCart()
+    {
+      document.getElementById("burgerList").selectedIndex = 0;
+      itemArr = [];
+      document.getElementById("cost").innerHTML = 0;
+      document.getElementById("orderCost").value = 0;
+      orderCost = convert_to_float(0.0);
+    }
+
     function checkOrder() {
       var cost = document.getElementById("cost").textContent;
       if (cost <= 0.00) {
@@ -224,6 +233,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         return true;
       }
     }
+
+    function openBlog() {
+      window.location.href = "http://rxc2199.uta.cloud/";
+    }
   </script>
 
 </head>
@@ -236,7 +249,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <a href="index.php">INICIO</a>
         <a href="nosotros.php">SOBRE NOSOTROS</a>
         <a href="menu.php">MENU</a>
-        <a class="open-button" onclick="redirect()">BLOG</a>
+        <a class="open-button" onclick="openBlog()">BLOG</a>
         <a href="contact.php">CONTACTO</a>
         <a href="http://rxc2199.uta.cloud/assignment2_RC/index.php?signout=true">DESCONECTAR</a>
       </div>
@@ -281,6 +294,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </select>
                 <button type="button" style="margin-left: 0.5em;" onclick="orderBurg()">
                   ADD
+                </button>
+                <button type="button" style="margin-left: 0.5em; background-color: red;" onclick="clearCart()">
+                CLEAR
                 </button>
               </div>
               <div id="orderDiv">
